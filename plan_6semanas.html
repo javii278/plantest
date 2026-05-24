@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Plan — 6 Semanas</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3a;
+    --accent: #c8ff00;
+    --accent2: #ff6b35;
+    --accent3: #7c6fff;
+    --text: #e8e8f0;
+    --muted: #6a6a80;
+    --success: #00d4a0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 60px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .header-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .header-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 10vw, 88px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  h1 span {
+    color: var(--accent);
+    display: block;
+  }
+
+  .header-sub {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* TRUTH BOX */
+  .truth-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    padding: 24px 28px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .truth-box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .truth-box p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .truth-box strong {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* VALORES */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .valores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 56px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .valor-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .valor-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .valor-card:nth-child(1)::before { background: var(--accent); }
+  .valor-card:nth-child(2)::before { background: var(--accent2); }
+  .valor-card:nth-child(3)::before { background: var(--accent3); }
+
+  .valor-card:hover { border-color: #3a3a50; }
+
+  .valor-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .valor-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .valor-card:nth-child(1) .valor-title { color: var(--accent); }
+  .valor-card:nth-child(2) .valor-title { color: var(--accent2); }
+  .valor-card:nth-child(3) .valor-title { color: var(--accent3); }
+
+  .valor-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* WEEKS */
+  .weeks-section {
+    margin-bottom: 56px;
+  }
+
+  .week-block {
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .week-block:nth-child(2) { animation-delay: 0.1s; }
+  .week-block:nth-child(3) { animation-delay: 0.2s; }
+
+  .week-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    user-select: none;
+  }
+
+  .week-header:hover {
+    background: var(--surface2);
+    border-color: #3a3a50;
+  }
+
+  .week-header.active {
+    border-color: var(--accent);
+    background: var(--surface2);
+  }
+
+  .week-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--border);
+    min-width: 52px;
+    transition: color 0.3s;
+  }
+
+  .week-header.active .week-num,
+  .week-header:hover .week-num {
+    color: var(--accent);
+  }
+
+  .week-info { flex: 1; }
+
+  .week-range {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .week-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .week-focus {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .week-block:nth-child(1) .week-focus { background: rgba(200,255,0,0.1); color: var(--accent); }
+  .week-block:nth-child(2) .week-focus { background: rgba(255,107,53,0.1); color: var(--accent2); }
+  .week-block:nth-child(3) .week-focus { background: rgba(124,111,255,0.1); color: var(--accent3); }
+
+  .week-chevron {
+    color: var(--muted);
+    transition: transform 0.3s;
+    font-size: 18px;
+  }
+
+  .week-header.active .week-chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+
+  .week-content {
+    display: none;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .week-content.open {
+    display: block;
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .task-list {
+    padding: 8px 0;
+  }
+
+  .task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .task-item:last-child { border-bottom: none; }
+  .task-item:hover { background: rgba(255,255,255,0.02); }
+
+  .task-check {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .task-item.done .task-check {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .task-item.done .task-check::after {
+    content: '✓';
+    font-size: 11px;
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  .task-text { flex: 1; }
+
+  .task-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+    transition: color 0.2s;
+  }
+
+  .task-item.done .task-name {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  .task-why {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .task-freq {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 6px;
+    padding: 2px 6px;
+    border: 1px solid var(--border);
+    display: inline-block;
+  }
+
+  /* DAILY CHECK */
+  .daily-section {
+    margin-bottom: 56px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .daily-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .daily-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .daily-card:hover { border-color: #3a3a50; background: var(--surface2); }
+
+  .daily-card.checked {
+    border-color: var(--success);
+    background: rgba(0,212,160,0.05);
+  }
+
+  .daily-card.checked .daily-icon { filter: none; }
+
+  .daily-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .daily-icon { font-size: 22px; filter: grayscale(1) opacity(0.5); transition: filter 0.3s; }
+  .daily-card.checked .daily-icon { filter: none; }
+
+  .daily-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    padding: 3px 7px;
+    border-radius: 2px;
+    background: var(--border);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+  }
+
+  .daily-card.checked .daily-status {
+    background: rgba(0,212,160,0.2);
+    color: var(--success);
+  }
+
+  .daily-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .daily-detail {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* MANTRA */
+  .mantra-section {
+    animation: fadeUp 0.8s 0.4s ease both;
+    margin-bottom: 56px;
+  }
+
+  .mantra-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mantra-box::before {
+    content: '❝';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 80px;
+    color: var(--border);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .mantra-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 4vw, 34px);
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .mantra-text span { color: var(--accent); }
+
+  .mantra-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* PATTERN WATCH */
+  .pattern-section {
+    animation: fadeUp 0.8s 0.5s ease both;
+    margin-bottom: 56px;
+  }
+
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .pattern-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .pattern-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .pattern-card:nth-child(1) .pattern-title { color: var(--accent2); }
+  .pattern-card:nth-child(2) .pattern-title { color: var(--success); }
+
+  .pattern-item {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .pattern-item:last-child { border-bottom: none; }
+
+  .pattern-item .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .pattern-card:nth-child(1) .dot { background: var(--accent2); }
+  .pattern-card:nth-child(2) .dot { background: var(--success); }
+
+  /* PROGRESS BAR */
+  .progress-section {
+    animation: fadeUp 0.8s 0.6s ease both;
+    margin-bottom: 56px;
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+
+  .progress-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .progress-days {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--accent);
+  }
+
+  .progress-days span {
+    font-size: 14px;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  .progress-bar-wrap {
+    height: 4px;
+    background: var(--border);
+    border-radius: 0;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 1s ease;
+    border-radius: 0;
+  }
+
+  .progress-weeks {
+    display: flex;
+    gap: 8px;
+  }
+
+  .progress-week-dot {
+    flex: 1;
+    height: 2px;
+    background: var(--border);
+    position: relative;
+  }
+
+  .progress-week-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    top: 8px;
+    left: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .progress-week-dot.active { background: var(--accent); }
+
+  /* RESET */
+  .reset-btn {
+    display: block;
+    margin: 0 auto;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 10px 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .reset-btn:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .valores-grid { grid-template-columns: 1fr; }
+    .daily-grid { grid-template-columns: 1fr; }
+    .pattern-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-tag">Plan personal · 6 semanas</div>
+    <h1>SALIR<span>DEL BUCLE.</span></h1>
+    <p class="header-sub">No se trata de motivación. Se trata de actuar en dirección a lo que valoras, aunque no te apetezca. Especialmente entonces.</p>
+  </div>
+
+  <!-- TRUTH BOX -->
+  <div class="truth-box">
+    <div class="truth-box-label">⚡ La verdad que ya sabes</div>
+    <p>El hype no es motivación real. Cuando aparezca ese subidón de "ahora sí", para y pregúntate: <strong>¿estoy construyendo algo, o estoy intentando escapar de cómo me siento?</strong> La respuesta honesta es la que importa.</p>
+  </div>
+
+  <!-- VALORES -->
+  <div style="animation: fadeUp 0.8s 0.15s ease both;">
+    <div class="section-label">Lo que de verdad importa para ti</div>
+    <div class="valores-grid">
+      <div class="valor-card">
+        <div class="valor-icon">🔓</div>
+        <div class="valor-title">Autonomía</div>
+        <div class="valor-desc">Libertad real. Espacio propio. No rendir cuentas a nadie. Este es tu motor más profundo.</div>
+      </div>
+      <div class="valor-card">
+        <div class="valor-icon">⚡</div>
+        <div class="valor-title">Competencia</div>
+        <div class="valor-desc">Crecer en ciberseguridad. El proyecto con tu amigo. Construir algo que sea tuyo de verdad.</div>
+      </div>
+      <div class="valor-card">
+        <div class="valor-icon">🔗</div>
+        <div class="valor-title">Conexión</div>
+        <div class="valor-desc">Pocas personas, pero que te llenen. Tu novia. Tu amigo. Sin depender de ellos para estar bien.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY CHECK -->
+  <div class="daily-section">
+    <div class="section-label">Check diario — marca lo de hoy</div>
+    <div class="daily-grid">
+      <div class="daily-card" onclick="toggleDaily(this)" data-id="caminar">
+        <div class="daily-top">
+          <div class="daily-icon">🚶</div>
+          <div class="daily-status">pendiente</div>
+        </div>
+        <div class="daily-name">30 min caminando</div>
+        <div class="daily-detail">Después de trabajar, antes de la siesta. Sin excusas, sin negociar.</div>
+      </div>
+      <div class="daily-card" onclick="toggleDaily(this)" data-id="siesta">
+        <div class="daily-top">
+          <div class="daily-icon">😴</div>
+          <div class="daily-status">pendiente</div>
+        </div>
+        <div class="daily-name">Siesta máx. 25 min</div>
+        <div class="daily-detail">Pon la alarma. No es opcional. Las siestas largas mantienen la apatía.</div>
+      </div>
+      <div class="daily-card" onclick="toggleDaily(this)" data-id="cierre">
+        <div class="daily-top">
+          <div class="daily-icon">💻</div>
+          <div class="daily-status">pendiente</div>
+        </div>
+        <div class="daily-name">Ritual de cierre</div>
+        <div class="daily-detail">Cerrar el ordenador y salir a caminar. Tu cerebro necesita saber cuándo termina el trabajo.</div>
+      </div>
+      <div class="daily-card" onclick="toggleDaily(this)" data-id="solo">
+        <div class="daily-top">
+          <div class="daily-icon">🧘</div>
+          <div class="daily-status">pendiente</div>
+        </div>
+        <div class="daily-name">Tiempo solo con intención</div>
+        <div class="daily-detail">Al menos un momento del día que sea tuyo. Sin pantallas, sin rendir cuentas.</div>
+      </div>
+      <div class="daily-card" onclick="toggleDaily(this)" data-id="patron">
+        <div class="daily-top">
+          <div class="daily-icon">🔍</div>
+          <div class="daily-status">pendiente</div>
+        </div>
+        <div class="daily-name">Observar el patrón</div>
+        <div class="daily-detail">¿Ha aparecido el hype hoy? ¿Era escape o construcción? Solo observar ya debilita el ciclo.</div>
+      </div>
+      <div class="daily-card" onclick="toggleDaily(this)" data-id="pc">
+        <div class="daily-top">
+          <div class="daily-icon">🎮</div>
+          <div class="daily-status">pendiente</div>
+        </div>
+        <div class="daily-name">PC después de las 20h</div>
+        <div class="daily-detail">No antes. El gaming como evitación impide que crezcan otras fuentes de refuerzo.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKS -->
+  <div class="weeks-section">
+    <div class="section-label">Roadmap por fases</div>
+
+    <div class="week-block">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div class="week-num">01—02</div>
+        <div class="week-info">
+          <div class="week-range">Semanas 1 y 2</div>
+          <div class="week-title">Base física y regulación propia</div>
+        </div>
+        <div class="week-focus">Cuerpo primero</div>
+        <div class="week-chevron">▾</div>
+      </div>
+      <div class="week-content">
+        <div class="task-list">
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Caminar 30 min diarios</div>
+              <div class="task-why">Tu fuente de dopamina más inmediata y completamente tuya. Blumenthal demostró que es tan efectivo como medicación para estados de apatía crónica.</div>
+              <div class="task-freq">Todos los días</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Siesta limitada a 25 minutos</div>
+              <div class="task-why">Las siestas largas fragmentan el sueño y bajan la energía vespertina. Pon alarma. Sin excepciones.</div>
+              <div class="task-freq">Todos los días</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Ritual de cierre del trabajo</div>
+              <div class="task-why">Cerrar el ordenador + salir a caminar. Tu cerebro necesita una señal clara de que el trabajo terminó y empieza tu tiempo.</div>
+              <div class="task-freq">Días laborables</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Proteger tiempo solo</div>
+              <div class="task-why">Me dijiste que cuando estás solo eres realmente feliz. Eso es información. Necesitas practicar estar bien contigo mismo antes de la convivencia.</div>
+              <div class="task-freq">Mínimo 3 veces/semana</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div class="week-num">03—04</div>
+        <div class="week-info">
+          <div class="week-range">Semanas 3 y 4</div>
+          <div class="week-title">El proyecto como identidad propia</div>
+        </div>
+        <div class="week-focus">Construir</div>
+        <div class="week-chevron">▾</div>
+      </div>
+      <div class="week-content">
+        <div class="task-list">
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Sesión semanal fija con tu amigo</div>
+              <div class="task-why">Día y hora fijos. No cuando os apetezca. La regularidad es lo que convierte una idea en algo real para el cerebro. Y es conexión fuera de la pareja.</div>
+              <div class="task-freq">1 vez/semana, día fijo</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Una tarea concreta del proyecto</div>
+              <div class="task-why">No "avanzar". Algo específico que quepa en una tarde y tenga resultado visible. Propuesta de servicios, investigar competidor, definir cliente ideal.</div>
+              <div class="task-freq">1 entregable/semana</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">PC solo después de las 20h</div>
+              <div class="task-why">El gaming no es el problema. Ocupar todas las tardes con estímulo pasivo impide que crezcan otras fuentes de refuerzo real.</div>
+              <div class="task-freq">Todos los días</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Observar el apego ansioso</div>
+              <div class="task-why">Cuando aparezca el miedo a que algo falle con tu novia o la mudanza: ¿hay algo concreto que resolver, o tu cerebro busca el peligro porque así funciona el apego?</div>
+              <div class="task-freq">Cuando aparezca</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div class="week-num">05—06</div>
+        <div class="week-info">
+          <div class="week-range">Semanas 5 y 6</div>
+          <div class="week-title">Preparar la convivencia desde un lugar sano</div>
+        </div>
+        <div class="week-focus">Siguiente capítulo</div>
+        <div class="week-chevron">▾</div>
+      </div>
+      <div class="week-content">
+        <div class="task-list">
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Diseñar activamente la vida nueva</div>
+              <div class="task-why">No esperar a que llegue. Decidir cómo queréis que sea el día a día, qué espacio va a ser tuyo dentro del piso. Habitar mentalmente la vida antes de que exista.</div>
+              <div class="task-freq">Esta fase</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Retomar ejercicio con estructura</div>
+              <div class="task-why">Para entonces llevas un mes caminando. Es el momento de añadir algo con más intensidad. Si tiene componente social o comunidad, mejor: construye conexión fuera de la pareja.</div>
+              <div class="task-freq">Esta fase</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Conversación honesta con tu novia</div>
+              <div class="task-why">Cómo queréis que sea la convivencia. Cuánto espacio individual necesita cada uno. Cómo gestionar los momentos de querer estar solos. Antes de mudarse, no después.</div>
+              <div class="task-freq">Una vez, esta fase</div>
+            </div>
+          </div>
+          <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-check"></div>
+            <div class="task-text">
+              <div class="task-name">Revisión honesta de las 6 semanas</div>
+              <div class="task-why">¿Qué ha cambiado, aunque sea poco? ¿Qué sigue igual? ¿Cómo está la dependencia emocional vs el inicio? Esto decide si retomar psicología tiene sentido ahora.</div>
+              <div class="task-freq">Al final de la semana 6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANTRA -->
+  <div class="mantra-section">
+    <div class="mantra-box">
+      <div class="mantra-text">La emoción viene <span>después</span> de la acción.<br>No al revés.</div>
+      <div class="mantra-sub">Actúa aunque no te apetezca. Especialmente entonces.</div>
+    </div>
+  </div>
+
+  <!-- PATTERN WATCH -->
+  <div class="pattern-section">
+    <div class="section-label">Vigilar el patrón</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <div class="pattern-title">🔴 Señales de alerta</div>
+        <div class="pattern-item"><div class="dot"></div>Hype repentino con un proyecto nuevo</div>
+        <div class="pattern-item"><div class="dot"></div>Querer añadir más cosas al plan</div>
+        <div class="pattern-item"><div class="dot"></div>Miedo intenso a que la mudanza falle</div>
+        <div class="pattern-item"><div class="dot"></div>Buscar la sensación de "estoy saliendo del bucle"</div>
+        <div class="pattern-item"><div class="dot"></div>Usar a tu novia para regularte emocionalmente</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-title">🟢 Señales de progreso</div>
+        <div class="pattern-item"><div class="dot"></div>Hacer algo aunque no te apetezca</div>
+        <div class="pattern-item"><div class="dot"></div>Reconocer el hype antes de seguirlo</div>
+        <div class="pattern-item"><div class="dot"></div>Estar bien solo durante un rato</div>
+        <div class="pattern-item"><div class="dot"></div>El proyecto avanza aunque sea poco</div>
+        <div class="pattern-item"><div class="dot"></div>El miedo aparece y no te paraliza</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-section">
+    <div class="section-label">Progreso</div>
+    <div class="progress-header">
+      <div class="progress-label">Días completados</div>
+      <div class="progress-days"><span id="dayCount">0</span> <span>/ 42 días</span></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-weeks">
+      <div class="progress-week-dot" data-label="S1–2"></div>
+      <div class="progress-week-dot" data-label="S1–2"></div>
+      <div class="progress-week-dot" data-label="S3–4"></div>
+      <div class="progress-week-dot" data-label="S3–4"></div>
+      <div class="progress-week-dot" data-label="S5–6"></div>
+      <div class="progress-week-dot" data-label="S5–6"></div>
+    </div>
+  </div>
+
+  <button class="reset-btn" onclick="resetDay()">Reiniciar check diario</button>
+
+</div>
+
+<script>
+  // STORAGE
+  const STORAGE_KEY = 'plan_bucle_v1';
+
+  function getState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { daily: {}, tasks: {}, days: 0, lastReset: null };
+    } catch { return { daily: {}, tasks: {}, days: 0, lastReset: null }; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  // DAILY TOGGLE
+  function toggleDaily(card) {
+    const id = card.dataset.id;
+    const state = getState();
+    state.daily[id] = !state.daily[id];
+    card.classList.toggle('checked', state.daily[id]);
+    card.querySelector('.daily-status').textContent = state.daily[id] ? 'hecho ✓' : 'pendiente';
+    saveState(state);
+    checkDayComplete(state);
+  }
+
+  function checkDayComplete(state) {
+    const allDone = Object.values(state.daily).filter(Boolean).length >= 4;
+    const today = new Date().toDateString();
+    if (allDone && state.lastReset !== today) {
+      // count as day done
+    }
+  }
+
+  // TASK TOGGLE
+  function toggleTask(item) {
+    const name = item.querySelector('.task-name').textContent;
+    const state = getState();
+    state.tasks[name] = !state.tasks[name];
+    item.classList.toggle('done', state.tasks[name]);
+    saveState(state);
+  }
+
+  // WEEK ACCORDION
+  function toggleWeek(header) {
+    const content = header.nextElementSibling;
+    const isOpen = content.classList.contains('open');
+    document.querySelectorAll('.week-content').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.week-header').forEach(h => h.classList.remove('active'));
+    if (!isOpen) {
+      content.classList.add('open');
+      header.classList.add('active');
+    }
+  }
+
+  // RESET DAY
+  function resetDay() {
+    const state = getState();
+    const today = new Date().toDateString();
+    const allDone = Object.values(state.daily).filter(Boolean).length >= 5;
+    if (allDone) { state.days = (state.days || 0) + 1; }
+    state.daily = {};
+    state.lastReset = today;
+    saveState(state);
+    loadState();
+  }
+
+  // LOAD STATE
+  function loadState() {
+    const state = getState();
+
+    // Daily
+    document.querySelectorAll('.daily-card').forEach(card => {
+      const id = card.dataset.id;
+      const done = state.daily[id];
+      card.classList.toggle('checked', !!done);
+      card.querySelector('.daily-status').textContent = done ? 'hecho ✓' : 'pendiente';
+    });
+
+    // Tasks
+    document.querySelectorAll('.task-item').forEach(item => {
+      const name = item.querySelector('.task-name').textContent;
+      item.classList.toggle('done', !!state.tasks[name]);
+    });
+
+    // Progress
+    const days = state.days || 0;
+    document.getElementById('dayCount').textContent = days;
+    setTimeout(() => {
+      document.getElementById('progressFill').style.width = (days / 42 * 100) + '%';
+    }, 300);
+
+    // Week dots
+    const weekDots = document.querySelectorAll('.progress-week-dot');
+    const weeksComplete = Math.floor(days / 7);
+    weekDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i < weeksComplete);
+    });
+  }
+
+  // AUTO-CHECK: open first week by default
+  window.addEventListener('load', () => {
+    loadState();
+    const firstHeader = document.querySelector('.week-header');
+    if (firstHeader) {
+      firstHeader.classList.add('active');
+      firstHeader.nextElementSibling.classList.add('open');
+    }
+    setTimeout(() => {
+      document.getElementById('progressFill').style.width = ((getState().days || 0) / 42 * 100) + '%';
+    }, 400);
+  });
+</script>
+</body>
+</html>
