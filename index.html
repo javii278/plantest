@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Plan · 6 Semanas</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf7f2;
+  --warm: #f5efe6;
+  --paper: #ede8df;
+  --sand: #d4c9b8;
+  --clay: #b8a898;
+  --brown: #7a6555;
+  --deep: #4a3728;
+  --text: #3d2e22;
+  --muted: #8a7a6d;
+  --sage: #8a9e8a;
+  --sage-light: #c8d8c3;
+  --sage-pale: #edf3eb;
+  --terracotta: #c4714a;
+  --terra-light: #f0d5c5;
+  --terra-pale: #faf0ea;
+  --dusty: #9b8db0;
+  --dusty-light: #d8d0e8;
+  --dusty-pale: #f2eff8;
+  --gold: #c49a3c;
+  --gold-light: #f0e0b0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* Texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sand);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  color: var(--brown);
+  font-style: italic;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--brown); }
+
+/* HERO */
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 48px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--sage);
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 7vw, 76px);
+  line-height: 1.1;
+  color: var(--deep);
+  margin-bottom: 28px;
+  font-weight: 700;
+}
+
+h1 em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: 400;
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 44px;
+}
+
+.hero-truth {
+  background: var(--terra-pale);
+  border-left: 3px solid var(--terracotta);
+  padding: 22px 28px;
+  max-width: 580px;
+  border-radius: 0 12px 12px 0;
+}
+
+.hero-truth-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 8px;
+}
+
+.hero-truth p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.8;
+  font-style: italic;
+  font-family: 'Lora', serif;
+}
+
+.hero-truth strong {
+  font-style: normal;
+  color: var(--terracotta);
+}
+
+/* Decorative circle */
+.hero-deco {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sage-pale) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 48px 100px;
+}
+
+/* SECTION */
+section { margin-bottom: 80px; }
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--deep);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+
+.section-intro {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+
+/* DIVIDER */
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--sand);
+  margin: 12px 0 32px;
+  border-radius: 2px;
+}
+
+/* VALORES */
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.valor-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 20px rgba(74,55,40,0.06);
+  border: 1px solid var(--paper);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.valor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(74,55,40,0.1);
+}
+
+.valor-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 16px 16px 0 0;
+}
+
+.valor-card.v1::before { background: var(--sage); }
+.valor-card.v2::before { background: var(--terracotta); }
+.valor-card.v3::before { background: var(--dusty); }
+
+.valor-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.valor-name {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.valor-card.v1 .valor-name { color: var(--sage); }
+.valor-card.v2 .valor-name { color: var(--terracotta); }
+.valor-card.v3 .valor-name { color: var(--dusty); }
+
+.valor-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* PILARES */
+.pilares-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.pilar-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  border: 1px solid var(--paper);
+  box-shadow: 0 2px 16px rgba(74,55,40,0.05);
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: transform 0.2s;
+}
+
+.pilar-card:hover { transform: translateY(-2px); }
+
+.pilar-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pilar-card:nth-child(1) .pilar-num { color: var(--sage-light); }
+.pilar-card:nth-child(2) .pilar-num { color: var(--sage-light); }
+.pilar-card:nth-child(3) .pilar-num { color: var(--dusty-light); }
+.pilar-card:nth-child(4) .pilar-num { color: var(--dusty-light); }
+
+.pilar-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.pilar-card:nth-child(1) .pilar-badge,
+.pilar-card:nth-child(2) .pilar-badge {
+  background: var(--sage-pale);
+  color: var(--sage);
+}
+
+.pilar-card:nth-child(3) .pilar-badge,
+.pilar-card:nth-child(4) .pilar-badge {
+  background: var(--dusty-pale);
+  color: var(--dusty);
+}
+
+.pilar-title {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--deep);
+  margin-bottom: 6px;
+}
+
+.pilar-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* SCHEDULE */
+.schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.schedule::before {
+  content: '';
+  position: absolute;
+  left: 72px;
+  top: 20px;
+  bottom: 20px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--sand) 10%, var(--sand) 90%, transparent);
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  position: relative;
+}
+
+.schedule-time {
+  text-align: right;
+  padding-top: 4px;
+}
+
+.schedule-time span {
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  color: var(--clay);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.schedule-dot {
+  position: absolute;
+  left: 68px;
+  top: 26px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 1px var(--sand);
+}
+
+.schedule-item.tipo-trabajo .schedule-dot { background: var(--sage); box-shadow: 0 0 0 1px var(--sage); }
+.schedule-item.tipo-descanso .schedule-dot { background: var(--terracotta); box-shadow: 0 0 0 1px var(--terracotta); }
+.schedule-item.tipo-libre .schedule-dot { background: var(--dusty); box-shadow: 0 0 0 1px var(--dusty); }
+.schedule-item.tipo-movimiento .schedule-dot { background: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+
+.schedule-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px 22px;
+  border: 1px solid var(--paper);
+  box-shadow: 0 2px 12px rgba(74,55,40,0.04);
+}
+
+.schedule-item.tipo-trabajo .schedule-card { border-left: 3px solid var(--sage); }
+.schedule-item.tipo-descanso .schedule-card { border-left: 3px solid var(--terracotta); }
+.schedule-item.tipo-libre .schedule-card { border-left: 3px solid var(--dusty); }
+.schedule-item.tipo-movimiento .schedule-card { border-left: 3px solid var(--gold); }
+
+.schedule-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.schedule-card-title {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--deep);
+}
+
+.schedule-tipo {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.tipo-trabajo .schedule-tipo { background: var(--sage-pale); color: var(--sage); }
+.tipo-descanso .schedule-tipo { background: var(--terra-pale); color: var(--terracotta); }
+.tipo-libre .schedule-tipo { background: var(--dusty-pale); color: var(--dusty); }
+.tipo-movimiento .schedule-tipo { background: var(--gold-light); color: var(--gold); }
+
+.schedule-main {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.schedule-why {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-style: italic;
+  padding-top: 8px;
+  border-top: 1px solid var(--paper);
+  margin-top: 8px;
+}
+
+/* PROTOCOLO */
+.protocolo-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.step-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 22px;
+  border: 1px solid var(--paper);
+  box-shadow: 0 2px 16px rgba(74,55,40,0.05);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.step-card:nth-child(1)::after { background: var(--sage); }
+.step-card:nth-child(2)::after { background: var(--terracotta); }
+.step-card:nth-child(3)::after { background: var(--dusty); }
+
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.step-card:nth-child(1) .step-num { color: var(--sage-light); }
+.step-card:nth-child(2) .step-num { color: var(--terra-light); }
+.step-card:nth-child(3) .step-num { color: var(--dusty-light); }
+
+.step-title {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.step-card:nth-child(1) .step-title { color: var(--sage); }
+.step-card:nth-child(2) .step-title { color: var(--terracotta); }
+.step-card:nth-child(3) .step-title { color: var(--dusty); }
+
+.step-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.step-science {
+  font-size: 11.5px;
+  color: var(--clay);
+  line-height: 1.6;
+  background: var(--warm);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-style: italic;
+  text-align: left;
+}
+
+/* PROGRESION */
+.progresion {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.prog-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px 20px;
+  border: 1px solid var(--paper);
+  box-shadow: 0 2px 12px rgba(74,55,40,0.04);
+}
+
+.prog-sem {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.prog-card:nth-child(1) .prog-sem { color: var(--sage); }
+.prog-card:nth-child(2) .prog-sem { color: var(--terracotta); }
+.prog-card:nth-child(3) .prog-sem { color: var(--dusty); }
+
+.prog-tiempo {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--deep);
+  margin-bottom: 8px;
+}
+
+.prog-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* RUMINACION */
+.filtro-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.filtro-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  border: 1px solid var(--paper);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(74,55,40,0.04);
+}
+
+.filtro-pregunta {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--deep);
+}
+
+.filtro-arrow {
+  font-size: 18px;
+  color: var(--sand);
+}
+
+.filtro-respuesta {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+.filtro-item:nth-child(1) .filtro-respuesta { background: var(--sage-pale); color: var(--sage); }
+.filtro-item:nth-child(2) .filtro-respuesta { background: var(--terra-pale); color: var(--terracotta); }
+.filtro-item:nth-child(3) .filtro-respuesta { background: var(--dusty-pale); color: var(--dusty); }
+
+/* SEÑALES */
+.senales-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.senales-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  border: 1px solid var(--paper);
+  box-shadow: 0 2px 12px rgba(74,55,40,0.04);
+}
+
+.senales-title {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.senales-card.alerta .senales-title { color: var(--terracotta); }
+.senales-card.progreso .senales-title { color: var(--sage); }
+
+.senal-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--warm);
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.senal-item:last-child { border-bottom: none; }
+
+.senal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.alerta .senal-dot { background: var(--terracotta); }
+.progreso .senal-dot { background: var(--sage); }
+
+/* CHECK DIARIO */
+.check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.check-item {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 18px;
+  border: 1px solid var(--paper);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 2px 8px rgba(74,55,40,0.04);
+  user-select: none;
+}
+
+.check-item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(74,55,40,0.08); }
+
+.check-item.done {
+  background: var(--sage-pale);
+  border-color: var(--sage-light);
+}
+
+.check-box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--sand);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+  margin-top: 1px;
+  font-size: 12px;
+  color: transparent;
+}
+
+.check-item.done .check-box {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: white;
+}
+
+.check-content {}
+
+.check-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--deep);
+  margin-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.check-item.done .check-name { color: var(--sage); }
+
+.check-detail {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.check-icon { font-size: 16px; margin-top: 2px; }
+
+/* TRACKER */
+.tracker-wrap {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--paper);
+  box-shadow: 0 2px 16px rgba(74,55,40,0.05);
+}
+
+.tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.tracker-count {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--deep);
+  line-height: 1;
+}
+
+.tracker-count span {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.tracker-progress {
+  height: 4px;
+  background: var(--paper);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.tracker-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sage), var(--terracotta), var(--dusty));
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+.tracker-days {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 5px;
+  margin-bottom: 16px;
+}
+
+.day-box {
+  aspect-ratio: 1;
+  border-radius: 5px;
+  border: 1.5px solid var(--paper);
+  background: var(--warm);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: var(--clay);
+  font-weight: 600;
+  position: relative;
+}
+
+.day-box:hover { transform: scale(1.15); }
+
+.day-box.done {
+  border-color: transparent;
+  color: white;
+}
+
+.day-box.done.s1 { background: var(--sage); }
+.day-box.done.s2 { background: var(--terracotta); }
+.day-box.done.s3 { background: var(--dusty); }
+
+.day-box.today {
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.tracker-legend {
+  display: flex;
+  gap: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* MANTRA */
+.mantra-section {
+  background: var(--deep);
+  border-radius: 20px;
+  padding: 56px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+
+.mantra-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(138,158,138,0.2), transparent 70%);
+}
+
+.mantra-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,113,74,0.2), transparent 70%);
+}
+
+.mantra-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 3.5vw, 34px);
+  color: var(--cream);
+  line-height: 1.4;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.mantra-quote em {
+  color: var(--terracotta);
+  font-style: italic;
+}
+
+.mantra-sub {
+  font-size: 14px;
+  color: var(--clay);
+  font-style: italic;
+  font-family: 'Lora', serif;
+}
+
+/* RESET */
+.reset-wrap {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.btn-reset {
+  background: none;
+  border: 1px solid var(--sand);
+  color: var(--muted);
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.btn-reset:hover { border-color: var(--brown); color: var(--brown); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.7s ease both;
+}
+
+section { animation: fadeUp 0.7s ease both; }
+section:nth-child(2) { animation-delay: 0.05s; }
+section:nth-child(3) { animation-delay: 0.1s; }
+section:nth-child(4) { animation-delay: 0.15s; }
+
+/* RESPONSIVE */
+@media (max-width: 680px) {
+  .hero { padding: 60px 24px 40px; }
+  .container { padding: 0 24px 80px; }
+  nav { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .valores-grid { grid-template-columns: 1fr; }
+  .pilares-grid { grid-template-columns: 1fr; }
+  .protocolo-steps { grid-template-columns: 1fr; }
+  .progresion { grid-template-columns: 1fr; }
+  .senales-grid { grid-template-columns: 1fr; }
+  .check-grid { grid-template-columns: 1fr; }
+  .tracker-days { grid-template-columns: repeat(7, 1fr); }
+  .filtro-item { grid-template-columns: 1fr; gap: 10px; }
+  .filtro-arrow { display: none; }
+  .hero-deco { display: none; }
+  .mantra-section { padding: 36px 24px; }
+  .schedule::before { left: 60px; }
+  .schedule-item { grid-template-columns: 68px 1fr; }
+  .schedule-dot { left: 56px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">mi plan · 6 semanas</div>
+  <ul class="nav-links">
+    <li><a href="#valores">Valores</a></li>
+    <li><a href="#dia">Mi día</a></li>
+    <li><a href="#tolerancia">Tolerancia</a></li>
+    <li><a href="#ruminacion">Rumiación</a></li>
+    <li><a href="#check">Check diario</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-eyebrow">Plan personal · 6 semanas</div>
+  <h1>Entrenar<br><em>la respuesta.</em></h1>
+  <p class="hero-sub">No se trata de motivación ni de fuerza de voluntad. Se trata de entrenar una respuesta diferente cuando aparece la incomodidad. Eso es lo que cambia el sistema.</p>
+  <div class="hero-truth">
+    <div class="hero-truth-label">✦ Lo que ya sabes</div>
+    <p>Cada vez que vas a TikTok para no pensar, o buscas reassurance cuando no deberías, estás evitando una sensación física de malestar. Tu cerebro aprende que esa sensación es peligrosa. Este plan entrena lo contrario: <strong>quedarse con ella hasta que deja de ser una amenaza.</strong></p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- VALORES -->
+  <section id="valores">
+    <div class="section-eyebrow">Lo que de verdad importa</div>
+    <h2 class="section-title">Tus tres <em>valores</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">No son metas. Son los principios que guían cada decisión del plan. Cuando no sepas por qué estás haciendo algo, vuelve aquí.</p>
+    <div class="valores-grid">
+      <div class="valor-card v1">
+        <span class="valor-icon">🌿</span>
+        <div class="valor-name">Autonomía</div>
+        <p class="valor-desc">Libertad real. Espacio propio. No rendir cuentas a nadie. Cuando estás solo eres realmente feliz — eso es información valiosa sobre quién eres.</p>
+      </div>
+      <div class="valor-card v2">
+        <span class="valor-icon">⚡</span>
+        <div class="valor-name">Competencia</div>
+        <p class="valor-desc">Crecer en ciberseguridad. El proyecto de consultoría con tu amigo. Construir algo que sea tuyo, que no dependa de nadie más para existir.</p>
+      </div>
+      <div class="valor-card v3">
+        <span class="valor-icon">🔗</span>
+        <div class="valor-name">Conexión real</div>
+        <p class="valor-desc">Pocas personas, pero que te llenen de verdad. Tu novia, tu amigo. La clave es no necesitarles para estar bien — quererles desde un lugar más sano.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILARES -->
+  <section id="pilares">
+    <div class="section-eyebrow">La estructura del plan</div>
+    <h2 class="section-title">Los 4 <em>pilares</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Priorizados para ti. Los dos primeros son el núcleo. Los dos últimos son el contexto que lo rodea todo.</p>
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <div class="pilar-num">01</div>
+        <div>
+          <span class="pilar-badge">Prioritario</span>
+          <div class="pilar-title">Estructura del día</div>
+          <p class="pilar-desc">El teletrabajo sin estructura es tu mayor enemigo. Tu día actual es un ciclo de trabajo, rumiación y distracción. Los bloques concretos cierran las puertas por donde entra la rumiación.</p>
+        </div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-num">02</div>
+        <div>
+          <span class="pilar-badge">Prioritario</span>
+          <div class="pilar-title">Tolerancia al malestar</div>
+          <p class="pilar-desc">El músculo que sostiene todo lo demás. Quedarse con la incomodidad sin escapar, en periodos cortos y progresivos, hasta que el cerebro aprende que no es una amenaza.</p>
+        </div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-num">03</div>
+        <div>
+          <span class="pilar-badge">Secundario</span>
+          <div class="pilar-title">Protocolo de rumiación</div>
+          <p class="pilar-desc">3 pasos concretos para cuando el cerebro se engancha en los peores escenarios. No para eliminar el pensamiento, sino para no alimentarlo.</p>
+        </div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-num">04</div>
+        <div>
+          <span class="pilar-badge">Secundario</span>
+          <div class="pilar-title">Pensamientos sobre la relación</div>
+          <p class="pilar-desc">Separar lo que tiene base real de lo que es catastrofismo puro. No todos tus miedos son iguales y merecen respuestas diferentes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIA -->
+  <section id="dia">
+    <div class="section-eyebrow">Pilar 01 — Prioritario</div>
+    <h2 class="section-title">Tu día <em>rediseñado</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Tu día actual: trabajar 30 min → rumiar 30 min → jugar 1h → TikTok → repetir. El nuevo: bloques con límites claros donde la rumiación no tiene espacio libre para entrar.</p>
+
+    <div class="schedule">
+
+      <div class="schedule-item tipo-descanso">
+        <div class="schedule-time"><span>08:00</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">🌅 Bloque arranque</div>
+            <span class="schedule-tipo">Ritual</span>
+          </div>
+          <p class="schedule-main">Levantarte sin mirar el móvil los primeros 20 minutos. Agua, ducha, café. Sin TikTok, sin Instagram, sin noticias.</p>
+          <p class="schedule-why">Los primeros 20 minutos del día marcan el tono del resto. Si empiezas en modo reactivo y pasivo, el cerebro entra en piloto automático y es mucho más difícil salir de él después.</p>
+        </div>
+      </div>
+
+      <div class="schedule-item tipo-trabajo">
+        <div class="schedule-time"><span>08:30</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">💻 Trabajo profundo I</div>
+            <span class="schedule-tipo">Trabajo</span>
+          </div>
+          <p class="schedule-main">Trabajo real con notificaciones en silencio. Si aparece un pensamiento sobre la relación: anota la palabra "pensamiento" en un papel y sigue. No lo desarrolles.</p>
+          <p class="schedule-why">Anotar el pensamiento lo aparca sin suprimirlo. El cerebro siente que "ha hecho algo" con él y puede seguir. Suprimirlo activamente hace el efecto contrario y lo amplifica.</p>
+        </div>
+      </div>
+
+      <div class="schedule-item tipo-descanso">
+        <div class="schedule-time"><span>11:00</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">☕ Descanso real</div>
+            <span class="schedule-tipo">Pausa</span>
+          </div>
+          <p class="schedule-main">Levantarte de la silla. Salir al balcón, preparar algo, estirarte. 20 minutos sin pantalla. No es cambiar de pantalla, es descanso físico real.</p>
+          <p class="schedule-why">Los descansos con pantalla no recuperan la capacidad de atención. Solo el descanso físico lo hace. Sin esto, el segundo bloque de trabajo será de mucho menor calidad.</p>
+        </div>
+      </div>
+
+      <div class="schedule-item tipo-trabajo">
+        <div class="schedule-time"><span>11:20</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">💻 Trabajo profundo II</div>
+            <span class="schedule-tipo">Trabajo</span>
+          </div>
+          <p class="schedule-main">Segunda sesión de trabajo. Mismo protocolo. Aquí va cualquier reunión o tarea menor si la tienes.</p>
+          <p class="schedule-why">La mayoría de personas tienen su pico cognitivo entre las 9 y las 13h. Estar en TikTok a las 11 es desperdiciar tu mejor ventana de rendimiento del día.</p>
+        </div>
+      </div>
+
+      <div class="schedule-item tipo-descanso">
+        <div class="schedule-time"><span>13:30</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">🍽️ Comida y desconexión</div>
+            <span class="schedule-tipo">Pausa</span>
+          </div>
+          <p class="schedule-main">Comer sin pantallas si puedes. Luego tiempo libre real — paseo corto, música, lo que no sea una pantalla. Siesta máximo 25 minutos con alarma puesta.</p>
+          <p class="schedule-why">La comida con pantalla mantiene el sistema nervioso activado. Necesitas una transición real entre mañana y tarde. Las siestas largas fragmentan el sueño y bajan la energía vespertina.</p>
+        </div>
+      </div>
+
+      <div class="schedule-item tipo-trabajo">
+        <div class="schedule-time"><span>15:00</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">🛠️ Trabajo o proyecto</div>
+            <span class="schedule-tipo">Trabajo</span>
+          </div>
+          <p class="schedule-main">Terminar trabajo pendiente o dedicar tiempo al proyecto de consultoría con tu amigo. Una tarea concreta con resultado visible — no "avanzar", algo específico.</p>
+          <p class="schedule-why">El proyecto necesita un hueco fijo en el calendario. Si no tiene hora, no existe. Cuando sea "cuando me apetezca", nunca llega. Este es su momento.</p>
+        </div>
+      </div>
+
+      <div class="schedule-item tipo-movimiento">
+        <div class="schedule-time"><span>17:00</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">🚶 Cierre y movimiento</div>
+            <span class="schedule-tipo">Movimiento</span>
+          </div>
+          <p class="schedule-main">Cerrar el ordenador. 2 minutos revisando qué has hecho hoy — sin juzgar, solo registrar. Salir a caminar 30 minutos. Es innegociable.</p>
+          <p class="schedule-why">Sin ritual de cierre, el cerebro no sabe cuándo termina el trabajo. El movimiento es tu fuente de dopamina más directa, completamente tuya, que no depende de nadie más.</p>
+        </div>
+      </div>
+
+      <div class="schedule-item tipo-libre">
+        <div class="schedule-time"><span>17:30</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">🧘 Tiempo propio</div>
+            <span class="schedule-tipo">Solo</span>
+          </div>
+          <p class="schedule-main">Tiempo solo con intención. Leer, música, pasear, lo que te llene. Proteger este espacio de la rumiación y del móvil. No es tiempo vacío.</p>
+          <p class="schedule-why">Me dijiste que cuando estás solo eres realmente feliz. Este tiempo es práctica activa de estar bien contigo mismo antes de la convivencia. Es terapéutico para el apego ansioso.</p>
+        </div>
+      </div>
+
+      <div class="schedule-item tipo-libre">
+        <div class="schedule-time"><span>20:00</span></div>
+        <div class="schedule-dot"></div>
+        <div class="schedule-card">
+          <div class="schedule-card-header">
+            <div class="schedule-card-title">🎮 Tiempo libre elegido</div>
+            <span class="schedule-tipo">Libre</span>
+          </div>
+          <p class="schedule-main">PC, series, lo que quieras. Pero elegido conscientemente, no por defecto. TikTok solo aquí, máximo 30 minutos con el límite activado en iPhone.</p>
+          <p class="schedule-why">El tiempo libre por defecto se convierte en evitación. Elegirlo activamente cambia cómo lo experimenta el cerebro. Hay una diferencia real entre descansar y escapar.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TOLERANCIA -->
+  <section id="tolerancia">
+    <div class="section-eyebrow">Pilar 02 — Prioritario</div>
+    <h2 class="section-title">Tolerar <em>el malestar</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">No se trata de eliminar la incomodidad. Se trata de aprender que puedes estar con ella sin que pase nada malo. Eso cambia el sistema automático. Es el único entrenamiento real.</p>
+
+    <div class="protocolo-steps">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Para y nombra</div>
+        <p class="step-desc">Cuando sientas el impulso de buscar reassurance, abrir TikTok, o engancharte en una película mental: di internamente "esto es malestar, no es una amenaza, es una sensación."</p>
+        <div class="step-science">Nombrarlo activa el córtex prefrontal y reduce la respuesta automática de la amígdala. No es magia, es lo que muestra la investigación de neurociencia afectiva.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title">Quédate 90 segundos</div>
+        <p class="step-desc">No hagas nada durante 90 segundos. Siente dónde está el malestar en el cuerpo — pecho, estómago, garganta. Obsérvalo sin intentar que se vaya.</p>
+        <div class="step-science">Jill Bolte Taylor demostró que una emoción química dura 90 segundos. Lo que la prolonga eres tú alimentándola. Si no la alimentas, empieza a bajar sola.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">Elige una acción pequeña</div>
+        <p class="step-desc">Después de los 90 segundos, haz algo concreto y físico. Levantarte, beber agua, 10 flexiones, salir al balcón. Algo pequeño y real.</p>
+        <div class="step-science">La acción física rompe el ciclo cognitivo. El cuerpo en movimiento no puede rumiar con la misma intensidad. No porque solucione nada, sino por cómo funciona el sistema nervioso.</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow" style="margin-top: 40px;">Cómo progresa por semanas</div>
+    <div class="progresion" style="margin-top: 16px;">
+      <div class="prog-card">
+        <div class="prog-sem">Semanas 1 — 2</div>
+        <div class="prog-tiempo">90 segundos</div>
+        <p class="prog-desc">Cuando aparezca el impulso, para y espera 90 segundos antes de actuar. Solo eso. No te pido más en esta fase.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-sem">Semanas 3 — 4</div>
+        <div class="prog-tiempo">5 minutos</div>
+        <p class="prog-desc">Ampliar a 5 minutos sin actuar sobre el impulso. Añadir la acción física concreta después de esperar.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-sem">Semanas 5 — 6</div>
+        <div class="prog-tiempo">10 minutos +</div>
+        <p class="prog-desc">Tolerar el malestar completo sin escapatoria. La convivencia se acerca — practicar ahora lo que necesitarás entonces.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RUMINACION -->
+  <section id="ruminacion">
+    <div class="section-eyebrow">Pilar 03</div>
+    <h2 class="section-title">Los pensamientos <em>sobre la relación</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Tus miedos no son todos iguales. Algunos tienen raíz en cosas que pasaron de verdad. Otros son catastrofismo puro sin evidencia actual. Tratarlos igual hace que sufras el doble.</p>
+
+    <div class="filtro-grid">
+      <div class="filtro-item">
+        <div class="filtro-pregunta">¿Tiene evidencia real en el presente?</div>
+        <div class="filtro-arrow">→</div>
+        <div class="filtro-respuesta">Sí → Es algo que resolver. Habla con ella cuando estés tranquilo, no en el pico del malestar. Planifícalo.</div>
+      </div>
+      <div class="filtro-item">
+        <div class="filtro-pregunta">¿Es una película del peor escenario sin base actual?</div>
+        <div class="filtro-arrow">→</div>
+        <div class="filtro-respuesta">No hay evidencia → Es catastrofismo. Aplica el protocolo de 90 segundos. No lo alimentes con más pensamientos.</div>
+      </div>
+      <div class="filtro-item">
+        <div class="filtro-pregunta">¿Buscas reassurance para calmarte en el momento?</div>
+        <div class="filtro-arrow">→</div>
+        <div class="filtro-respuesta">Para → El alivio es temporal y refuerza el ciclo. Tolera los 90 segundos primero. Siempre primero.</div>
+      </div>
+    </div>
+
+    <div class="senales-grid" style="margin-top: 28px;">
+      <div class="senales-card alerta">
+        <div class="senales-title">🔴 Señales de alerta</div>
+        <div class="senal-item"><div class="senal-dot"></div>Hype repentino con un proyecto nuevo</div>
+        <div class="senal-item"><div class="senal-dot"></div>Querer añadir más cosas al plan</div>
+        <div class="senal-item"><div class="senal-dot"></div>Miedo intenso sin evidencia real actual</div>
+        <div class="senal-item"><div class="senal-dot"></div>TikTok para no pensar — esto es evitación</div>
+        <div class="senal-item"><div class="senal-dot"></div>Buscar reassurance en el pico del malestar</div>
+        <div class="senal-item"><div class="senal-dot"></div>Películas mentales del peor escenario</div>
+      </div>
+      <div class="senales-card progreso">
+        <div class="senales-title">🌿 Señales de progreso</div>
+        <div class="senal-item"><div class="senal-dot"></div>Tolerar 90 segundos sin actuar</div>
+        <div class="senal-item"><div class="senal-dot"></div>Nombrar el pensamiento y seguir trabajando</div>
+        <div class="senal-item"><div class="senal-dot"></div>Estar bien solo durante un rato</div>
+        <div class="senal-item"><div class="senal-dot"></div>El proyecto avanza, aunque sea poco</div>
+        <div class="senal-item"><div class="senal-dot"></div>El miedo aparece y no te paraliza</div>
+        <div class="senal-item"><div class="senal-dot"></div>Distinguir evidencia real de catastrofismo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECK DIARIO -->
+  <section id="check">
+    <div class="section-eyebrow">Para cada día</div>
+    <h2 class="section-title">Check <em>diario</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Ábrelo cada mañana antes de empezar. Márcalo cada noche antes de dormir. No para sentirte bien marcándolo, sino para que la fricción de no marcarlo te diga algo.</p>
+
+    <div class="check-grid">
+      <div class="check-item" onclick="toggleCheck(this)" data-id="arranque">
+        <div class="check-icon">🌅</div>
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-name">Arranque sin móvil</div>
+          <div class="check-detail">20 min sin pantalla al levantarte</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" data-id="trabajo">
+        <div class="check-icon">💻</div>
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-name">2 bloques de trabajo cumplidos</div>
+          <div class="check-detail">Con notificaciones en silencio</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" data-id="descanso">
+        <div class="check-icon">☕</div>
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-name">Descansos sin pantalla</div>
+          <div class="check-detail">Físico real, no cambio de pantalla</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" data-id="siesta">
+        <div class="check-icon">😴</div>
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-name">Siesta máx. 25 minutos</div>
+          <div class="check-detail">Con alarma. Sin excepciones</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" data-id="caminar">
+        <div class="check-icon">🚶</div>
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-name">30 minutos caminando</div>
+          <div class="check-detail">Tu dopamina propia. Innegociable</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" data-id="protocolo">
+        <div class="check-icon">🧘</div>
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-name">Protocolo 90s aplicado</div>
+          <div class="check-detail">Si tocó hoy. Para, nombra, quédate</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" data-id="tiktok">
+        <div class="check-icon">📱</div>
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-name">TikTok solo después de las 20h</div>
+          <div class="check-detail">Máximo 30 min con límite activado</div>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" data-id="solo">
+        <div class="check-icon">🌿</div>
+        <div class="check-box">✓</div>
+        <div class="check-content">
+          <div class="check-name">Tiempo solo con intención</div>
+          <div class="check-detail">Sin pantallas, sin rendir cuentas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reset-wrap">
+      <button class="btn-reset" onclick="resetChecks()">Reiniciar check del día</button>
+    </div>
+  </section>
+
+  <!-- TRACKER -->
+  <section id="tracker">
+    <div class="section-eyebrow">42 días</div>
+    <h2 class="section-title">Tu <em>progreso</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Marca cada día que hayas cumplido al menos 6 de los 8 checks. No perfección, consistencia.</p>
+
+    <div class="tracker-wrap">
+      <div class="tracker-header">
+        <div>
+          <div class="tracker-count"><span id="dayCount">0</span> <span>/ 42 días</span></div>
+        </div>
+        <div class="tracker-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--sage)"></div>S1-2</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--terracotta)"></div>S3-4</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--dusty)"></div>S5-6</div>
+        </div>
+      </div>
+      <div class="tracker-progress">
+        <div class="tracker-bar" id="trackerBar" style="width:0%"></div>
+      </div>
+      <div class="tracker-days" id="trackerDays"></div>
+      <div style="margin-top:16px; text-align:center;">
+        <button class="btn-reset" onclick="resetTracker()">Reiniciar tracker</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANTRA -->
+  <div class="mantra-section">
+    <div class="mantra-quote">La constancia no se construye<br>con motivación.<br><em>Se construye entrenando.</em></div>
+    <p class="mantra-sub">Hacer cosas simples cuando no te apetece, sin adrenalina, sin hype. Eso es lo más difícil que existe para tu patrón. Y es lo único que funciona.</p>
+  </div>
+
+</div>
+
+<script>
+const KEY = 'plan_v3';
+
+function getState() {
+  try { return JSON.parse(localStorage.getItem(KEY)) || { checks: {}, days: [], lastReset: null }; }
+  catch { return { checks: {}, days: [], lastReset: null }; }
+}
+
+function save(state) { localStorage.setItem(KEY, JSON.stringify(state)); }
+
+function toggleCheck(el) {
+  const id = el.dataset.id;
+  const state = getState();
+  state.checks[id] = !state.checks[id];
+  el.classList.toggle('done', !!state.checks[id]);
+  save(state);
+}
+
+function resetChecks() {
+  const state = getState();
+  const done = Object.values(state.checks).filter(Boolean).length;
+  if (done >= 6) {
+    const today = new Date().toISOString().split('T')[0];
+    if (!state.days.includes(today)) {
+      state.days.push(today);
+    }
+  }
+  state.checks = {};
+  state.lastReset = new Date().toDateString();
+  save(state);
+  loadChecks();
+  buildTracker();
+}
+
+function resetTracker() {
+  const state = getState();
+  state.days = [];
+  save(state);
+  buildTracker();
+}
+
+function loadChecks() {
+  const state = getState();
+  document.querySelectorAll('.check-item').forEach(el => {
+    el.classList.toggle('done', !!state.checks[el.dataset.id]);
+  });
+}
+
+function buildTracker() {
+  const state = getState();
+  const container = document.getElementById('trackerDays');
+  container.innerHTML = '';
+  const today = new Date().toISOString().split('T')[0];
+
+  for (let i = 1; i <= 42; i++) {
+    const box = document.createElement('div');
+    box.className = 'day-box';
+    box.textContent = i;
+
+    const sem = i <= 14 ? 's1' : i <= 28 ? 's2' : 's3';
+    const isDone = state.days.length >= i;
+    const isToday = state.days.length === i - 1;
+
+    if (isDone) box.classList.add('done', sem);
+    if (isToday) box.classList.add('today');
+
+    box.onclick = () => toggleDay(i);
+    container.appendChild(box);
+  }
+
+  const count = state.days.length;
+  document.getElementById('dayCount').textContent = count;
+  setTimeout(() => {
+    document.getElementById('trackerBar').style.width = (count / 42 * 100) + '%';
+  }, 200);
+}
+
+function toggleDay(n) {
+  const state = getState();
+  if (state.days.length >= n) {
+    state.days = state.days.slice(0, n - 1);
+  } else {
+    while (state.days.length < n) {
+      state.days.push('manual-' + state.days.length);
+    }
+  }
+  save(state);
+  buildTracker();
+}
+
+window.addEventListener('load', () => {
+  loadChecks();
+  buildTracker();
+});
+</script>
+</body>
+</html>
